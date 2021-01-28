@@ -77,6 +77,7 @@
           <!-- Table header -->
           <thead
             is="vgt-table-header"
+            :additionalTr="additionalTr"
             ref="table-header-secondary"
             @on-toggle-select-all="toggleSelectAll"
             @on-sort-change="changeSort"
@@ -133,6 +134,7 @@
           <!-- Table header -->
           <thead
             is="vgt-table-header"
+            :additionalTr="additionalTr"
             ref="table-header-primary"
             @on-toggle-select-all="toggleSelectAll"
             @on-sort-change="changeSort"
@@ -177,6 +179,7 @@
             :key="index"
           >
             <!-- if group row header is at the top -->
+
             <vgt-header-row
               v-if="groupHeaderOnTop"
               @vgtExpand="toggleExpand(headerRow[rowKeyField])"
@@ -363,6 +366,7 @@ export default {
   name: 'vue-good-table',
   props: {
     isLoading: { default: null, type: Boolean },
+      additionalTr: { default: false, type: Boolean },
     maxHeight: { default: null, type: String },
     fixedHeader: Boolean ,
     theme: { default: '' },

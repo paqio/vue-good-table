@@ -8324,7 +8324,7 @@ var __vue_render__$3 = function __vue_render__() {
       },
       on: {
         "change": function change($event) {
-          return _vm.updateFilters(column, $event.target.value);
+          return _vm.updateFiltersImmediately(column.field, $event.target.value);
         }
       }
     }, [_c('option', {
@@ -8349,7 +8349,7 @@ var __vue_render__$3 = function __vue_render__() {
       },
       on: {
         "change": function change($event) {
-          return _vm.updateFilters(column, $event.target.value, true);
+          return _vm.updateFiltersImmediately(column.field, $event.target.value);
         }
       }
     }, [_c('option', {
@@ -8377,7 +8377,7 @@ var __vue_staticRenderFns__$3 = [];
 var __vue_inject_styles__$3 = undefined;
 /* scoped */
 
-var __vue_scope_id__$3 = "data-v-76ee74f4";
+var __vue_scope_id__$3 = "data-v-5a65dbc0";
 /* module identifier */
 
 var __vue_module_identifier__$3 = undefined;
@@ -8444,6 +8444,10 @@ var secondarySort = function (sortArray, column) {
 var script$4 = {
   name: 'VgtTableHeader',
   props: {
+    additionalTr: {
+      "default": false,
+      type: Boolean
+    },
     lineNumbers: {
       "default": false,
       type: Boolean
@@ -8665,7 +8669,35 @@ var __vue_render__$4 = function __vue_render__() {
 
   var _c = _vm._self._c || _h;
 
-  return _c('thead', [_c('tr', [_vm.lineNumbers ? _c('th', {
+  return _c('thead', [_vm.additionalTr ? _c('tr', [_c('th', {
+    attrs: {
+      "colspan": "2"
+    }
+  }), _vm._v(" "), _c('th', {
+    staticClass: "text-uppercase",
+    staticStyle: {
+      "font-size": "20px",
+      "text-align": "right"
+    },
+    attrs: {
+      "scope": "col",
+      "colspan": "2"
+    }
+  }, [_vm._v("\n        Laatste transactie\n    ")]), _vm._v(" "), _c('th', {
+    staticClass: "text-uppercase",
+    staticStyle: {
+      "font-size": "20px",
+      "text-align": "center"
+    },
+    attrs: {
+      "scope": "col",
+      "colspan": "2"
+    }
+  }, [_vm._v("\n        Koppeling adviseur\n    ")]), _vm._v(" "), _c('th', {
+    attrs: {
+      "colspan": "1"
+    }
+  })]) : _vm._e(), _vm._v(" "), _c('tr', [_vm.lineNumbers ? _c('th', {
     staticClass: "line-numbers",
     attrs: {
       "scope": "col"
@@ -13703,6 +13735,10 @@ var script$6 = {
       "default": null,
       type: Boolean
     },
+    additionalTr: {
+      "default": false,
+      type: Boolean
+    },
     maxHeight: {
       "default": null,
       type: String
@@ -14948,7 +14984,7 @@ var __vue_render__$6 = function __vue_render__() {
       "nextText": _vm.nextText,
       "prevText": _vm.prevText,
       "rowsPerPageText": _vm.rowsPerPageText,
-      "perPageDropdownEnabled": _vm.perPageDropdownEnabled,
+      "perPageDropdownEnabled": _vm.paginationOptions.perPageDropdownEnabled,
       "customRowsPerPageDropdown": _vm.customRowsPerPageDropdown,
       "paginateDropdownAllowAll": _vm.paginateDropdownAllowAll,
       "ofText": _vm.ofText,
@@ -15014,6 +15050,7 @@ var __vue_render__$6 = function __vue_render__() {
     ref: "table-header-secondary",
     tag: "thead",
     attrs: {
+      "additionalTr": _vm.additionalTr,
       "columns": _vm.columns,
       "line-numbers": _vm.lineNumbers,
       "selectable": _vm.selectable,
@@ -15070,6 +15107,7 @@ var __vue_render__$6 = function __vue_render__() {
     ref: "table-header-primary",
     tag: "thead",
     attrs: {
+      "additionalTr": _vm.additionalTr,
       "columns": _vm.columns,
       "line-numbers": _vm.lineNumbers,
       "selectable": _vm.selectable,
@@ -15246,7 +15284,7 @@ var __vue_render__$6 = function __vue_render__() {
       "nextText": _vm.nextText,
       "prevText": _vm.prevText,
       "rowsPerPageText": _vm.rowsPerPageText,
-      "perPageDropdownEnabled": _vm.perPageDropdownEnabled,
+      "perPageDropdownEnabled": _vm.paginationOptions.perPageDropdownEnabled,
       "customRowsPerPageDropdown": _vm.customRowsPerPageDropdown,
       "paginateDropdownAllowAll": _vm.paginateDropdownAllowAll,
       "ofText": _vm.ofText,

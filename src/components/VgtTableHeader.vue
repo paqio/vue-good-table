@@ -1,5 +1,26 @@
 <template>
 <thead>
+<tr v-if="additionalTr">
+    <th colspan="2"></th>
+    <th
+        scope="col"
+        colspan="2"
+        class="text-uppercase"
+        style="font-size: 20px;text-align: right;"
+    >
+        Laatste transactie
+    </th>
+
+    <th
+        scope="col"
+        colspan="2"
+        class="text-uppercase"
+        style="font-size: 20px;text-align: center;"
+    >
+        Koppeling adviseur
+    </th>
+    <th colspan="1"></th>
+</tr>
   <tr>
     <th scope="col" v-if="lineNumbers" class="line-numbers"></th>
     <th scope="col" v-if="selectable" class="vgt-checkbox-col">
@@ -62,6 +83,10 @@ import * as SortUtils from './utils/sort.js';
 export default {
   name: 'VgtTableHeader',
   props: {
+      additionalTr: {
+        default:false,
+        type: Boolean
+      },
     lineNumbers: {
       default: false,
       type: Boolean,
@@ -262,7 +287,7 @@ export default {
           this.setColumnStyles();
       });
       this.ro.observe(this.$parent.$el);
-      
+
       // If this is a fixed-header table, we want to observe each column header from the non-fixed header.
       // You can imagine two columns swapping widths, which wouldn't cause the above to trigger.
       // This gets the first tr element of the primary table header, and iterates through its children (the th elements)
